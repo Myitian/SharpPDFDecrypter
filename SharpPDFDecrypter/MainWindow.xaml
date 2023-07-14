@@ -1,0 +1,194 @@
+﻿<Window x:Class="SharpPDFDecrypter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SharpPDFDecrypter"
+        mc:Ignorable="d"
+        Title="SharpPDFDecrypter"
+        Height="450"
+        Width="800"
+        AllowDrop="true"
+        Drop="Window_Drop">
+    <Window.Resources>
+        <Style x:Key="MenuButton"
+               TargetType="Button">
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="Background"
+                    Value="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" />
+            <Setter Property="BorderBrush"
+                    Value="{x:Null}" />
+            <Setter Property="Width"
+                    Value="75" />
+        </Style>
+        <Style x:Key="MenuImage"
+               TargetType="Image">
+            <Setter Property="RenderOptions.BitmapScalingMode"
+                    Value="NearestNeighbor" />
+            <Setter Property="Width"
+                    Value="32" />
+            <Setter Property="Height"
+                    Value="32" />
+        </Style>
+        <Style x:Key="ListTextBox"
+               TargetType="TextBox">
+            <Setter Property="Background"
+                    Value="{x:Null}" />
+            <Setter Property="BorderBrush"
+                    Value="{x:Null}" />
+        </Style>
+    </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:MainWindow.OpenFileCmd}"
+                        Executed="OpenFile_Executed"
+                        CanExecute="OpenFile_CanExecute" />
+        <CommandBinding Command="{x:Static local:MainWindow.OpenFolderCmd}"
+                        Executed="OpenFolder_Executed"
+                        CanExecute="OpenFolder_CanExecute" />
+    </Window.CommandBindings>
+    <Window.InputBindings>
+        <KeyBinding Key="O"
+                    Modifiers="Ctrl"
+                    Command="{x:Static local:MainWindow.OpenFileCmd}" />
+    </Window.InputBindings>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top"
+              AutomationProperties.Name="菜单">
+            <MenuItem Header="文件 (_F)">
+                <MenuItem Header="添加文件 (_F)"
+                          Command="{x:Static local:MainWindow.OpenFileCmd}" />
+                <MenuItem Header="添加文件夹 (_D)"
+                          Command="{x:Static local:MainWindow.OpenFolderCmd}" />
+                <MenuItem Header="移除项目 (_R)" />
+                <MenuItem Header="清空列表 (_C)" />
+            </MenuItem>
+            <MenuItem Header="运行 (_R)" />
+        </Menu>
+        <StackPanel DockPanel.Dock="Top"
+                    Orientation="Horizontal"
+                    Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
+            <Button Style="{StaticResource MenuButton}"
+                    Command="{x:Static local:MainWindow.OpenFileCmd}"
+                    AutomationProperties.Name="添加文件">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Image x:Name="AddFileIcon"
+                           Style="{StaticResource MenuImage}"
+                           Grid.Row="0" />
+                    <Label Grid.Row="1">添加文件</Label>
+                </Grid>
+            </Button>
+            <Button Style="{StaticResource MenuButton}"
+                    Command="{x:Static local:MainWindow.OpenFolderCmd}"
+                    AutomationProperties.Name="添加文件夹">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Image x:Name="AddFolderIcon"
+                           Style="{StaticResource MenuImage}"
+                           Grid.Row="0" />
+                    <Label Grid.Row="1">添加文件夹</Label>
+                </Grid>
+            </Button>
+            <Button Style="{StaticResource MenuButton}"
+                    AutomationProperties.Name="移除项目">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Image x:Name="RemoveItemIcon"
+                           Style="{StaticResource MenuImage}"
+                           Grid.Row="0" />
+                    <Label Grid.Row="1">移除项目</Label>
+                </Grid>
+            </Button>
+            <Button Style="{StaticResource MenuButton}"
+                    AutomationProperties.Name="清空列表">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Image x:Name="ClearListIcon"
+                           Style="{StaticResource MenuImage}"
+                           Grid.Row="0" />
+                    <Label Grid.Row="1">清空列表</Label>
+                </Grid>
+            </Button>
+            <Button Style="{StaticResource MenuButton}"
+                    AutomationProperties.Name="运行解密">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Image x:Name="RunDecryptionIcon"
+                           Style="{StaticResource MenuImage}"
+                           Grid.Row="0" />
+                    <Label Grid.Row="1">运行解密</Label>
+                </Grid>
+            </Button>
+        </StackPanel>
+        <Label DockPanel.Dock="Bottom">空闲</Label>
+        <ListView ItemsSource="{Binding Tasks, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}"
+                  ScrollViewer.CanContentScroll="False"
+                  HorizontalContentAlignment="Stretch"
+                  d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment"
+                            Value="Stretch" />
+                    <Setter Property="VerticalContentAlignment"
+                            Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="源文件"
+                                    Width="250">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding SourceFile, Mode=TwoWay}"
+                                         Style="{StaticResource ListTextBox}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="目标文件"
+                                    Width="250">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding DestinationFile, Mode=TwoWay}"
+                                         Style="{StaticResource ListTextBox}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="进度"
+                                    Width="150">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <ProgressBar Maximum="100"
+                                             Value="{Binding Progress}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="状态"
+                                    Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding StateString}"
+                                           Foreground="{Binding StateBrush}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </DockPanel>
+</Window>
