@@ -1,2 +1,2 @@
 # SharpPDFDecrypter
-Decrypt PDF by qpdf
+Decrypt PDF by qpdf. In development now.
