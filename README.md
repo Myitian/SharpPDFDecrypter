@@ -15,3 +15,9 @@ and does not support cracking the opening password (User Password).
 
 You can drag and drop PDF files or folders containing PDFs to the main window 
 to add files, or click "打开文件" or "打开文件夹" to add files.
+
+## Environment
+
+.NET Framework 4.7 或更高版本的 .NET Framework
+
+.NET Framework 4.7 or higher version of .NET Framework

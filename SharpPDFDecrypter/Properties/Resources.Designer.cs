@@ -147,6 +147,13 @@ namespace SharpPDFDecrypter.Properties {
         ///项目地址：{4}
         ///开源许可证：{5}
         ///
+        ///本程序支持移除 PDF 文件中的编辑和打印保护(Owner Password)
+        ///和打开口令(User Password)（若文件有打开口令，需要提供打开口令），
+        ///不支持破解打开口令(User Password)。
+        ///
+        ///可将 PDF 文件或包含 PDF 文件夹拖放至主窗口来添加文件，
+        ///也可点击“打开文件”或“打开文件夹”来添加文件。
+        ///
         ///是否要在浏览器中打开项目地址？ 的本地化字符串。
         /// </summary>
         public static string ProjectInfo {
