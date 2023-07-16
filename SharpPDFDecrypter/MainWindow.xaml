@@ -57,6 +57,8 @@ limitations under the License.
         </Style>
         <Style x:Key="ListTextBox"
                TargetType="TextBox">
+            <Setter Property="ToolTip"
+                    Value="{Binding Text, RelativeSource={RelativeSource Self}}" />
             <Setter Property="Background"
                     Value="{x:Null}" />
             <Setter Property="BorderBrush"
@@ -120,94 +122,97 @@ limitations under the License.
                           Command="{StaticResource ProjectInfoCmd}" />
             </MenuItem>
         </Menu>
-        <StackPanel DockPanel.Dock="Top"
-                    Orientation="Horizontal"
-                    Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
-            <Button Style="{StaticResource MenuButton}"
-                    Command="{StaticResource OpenFileCmd}"
-                    AutomationProperties.Name="添加文件">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-                    <Image x:Name="AddFileIcon"
-                           Style="{StaticResource MenuImage}"
-                           Grid.Row="0" />
-                    <Label Grid.Row="1">添加文件</Label>
-                </Grid>
-            </Button>
-            <Button Style="{StaticResource MenuButton}"
-                    Command="{StaticResource OpenFolderCmd}"
-                    AutomationProperties.Name="添加文件夹">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-                    <Image x:Name="AddFolderIcon"
-                           Style="{StaticResource MenuImage}"
-                           Grid.Row="0" />
-                    <Label Grid.Row="1">添加文件夹</Label>
-                </Grid>
-            </Button>
-            <Button Style="{StaticResource MenuButton}"
-                    Command="{StaticResource RemoveItemCmd}"
-                    AutomationProperties.Name="移除项目">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-                    <Image x:Name="RemoveItemIcon"
-                           Style="{StaticResource MenuImage}"
-                           Grid.Row="0" />
-                    <Label Grid.Row="1">移除项目</Label>
-                </Grid>
-            </Button>
-            <Button Style="{StaticResource MenuButton}"
-                    Command="{StaticResource ClearListCmd}"
-                    AutomationProperties.Name="清空列表">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-                    <Image x:Name="ClearListIcon"
-                           Style="{StaticResource MenuImage}"
-                           Grid.Row="0" />
-                    <Label Grid.Row="1">清空列表</Label>
-                </Grid>
-            </Button>
-            <Button Style="{StaticResource MenuButton}"
-                    Command="{StaticResource RunDecryptionCmd}"
-                    AutomationProperties.Name="运行解密">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-                    <Image x:Name="RunDecryptionIcon"
-                           Style="{StaticResource MenuImage}"
-                           Grid.Row="0" />
-                    <Label Grid.Row="1">运行解密</Label>
-                </Grid>
-            </Button>
-            <Button Style="{StaticResource MenuButton}"
-                    Command="{StaticResource StopDecryptionCmd}"
-                    AutomationProperties.Name="中止解密">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-                    <Image x:Name="StopDecryptionIcon"
-                           Style="{StaticResource MenuImage}"
-                           Grid.Row="0" />
-                    <Label Grid.Row="1">中止解密</Label>
-                </Grid>
-            </Button>
-        </StackPanel>
+        <ScrollViewer DockPanel.Dock="Top"
+                      VerticalScrollBarVisibility="Disabled"
+                      HorizontalScrollBarVisibility="Auto">
+            <StackPanel Orientation="Horizontal"
+                        Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
+                <Button Style="{StaticResource MenuButton}"
+                        Command="{StaticResource OpenFileCmd}"
+                        AutomationProperties.Name="添加文件">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Image x:Name="AddFileIcon"
+                               Style="{StaticResource MenuImage}"
+                               Grid.Row="0" />
+                        <Label Grid.Row="1">添加文件</Label>
+                    </Grid>
+                </Button>
+                <Button Style="{StaticResource MenuButton}"
+                        Command="{StaticResource OpenFolderCmd}"
+                        AutomationProperties.Name="添加文件夹">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Image x:Name="AddFolderIcon"
+                               Style="{StaticResource MenuImage}"
+                               Grid.Row="0" />
+                        <Label Grid.Row="1">添加文件夹</Label>
+                    </Grid>
+                </Button>
+                <Button Style="{StaticResource MenuButton}"
+                        Command="{StaticResource RemoveItemCmd}"
+                        AutomationProperties.Name="移除项目">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Image x:Name="RemoveItemIcon"
+                               Style="{StaticResource MenuImage}"
+                               Grid.Row="0" />
+                        <Label Grid.Row="1">移除项目</Label>
+                    </Grid>
+                </Button>
+                <Button Style="{StaticResource MenuButton}"
+                        Command="{StaticResource ClearListCmd}"
+                        AutomationProperties.Name="清空列表">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Image x:Name="ClearListIcon"
+                               Style="{StaticResource MenuImage}"
+                               Grid.Row="0" />
+                        <Label Grid.Row="1">清空列表</Label>
+                    </Grid>
+                </Button>
+                <Button Style="{StaticResource MenuButton}"
+                        Command="{StaticResource RunDecryptionCmd}"
+                        AutomationProperties.Name="运行解密">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Image x:Name="RunDecryptionIcon"
+                               Style="{StaticResource MenuImage}"
+                               Grid.Row="0" />
+                        <Label Grid.Row="1">运行解密</Label>
+                    </Grid>
+                </Button>
+                <Button Style="{StaticResource MenuButton}"
+                        Command="{StaticResource StopDecryptionCmd}"
+                        AutomationProperties.Name="中止解密">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Image x:Name="StopDecryptionIcon"
+                               Style="{StaticResource MenuImage}"
+                               Grid.Row="0" />
+                        <Label Grid.Row="1">中止解密</Label>
+                    </Grid>
+                </Button>
+            </StackPanel>
+        </ScrollViewer>
         <Label x:Name="State"
                DockPanel.Dock="Bottom">空闲</Label>
         <ListView x:Name="TaskView"
@@ -225,15 +230,18 @@ limitations under the License.
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="源文件"
-                                    Width="250">
+                                    Width="270">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding SourceFile}" />
+                                <TextBox BorderThickness="0"
+                                         IsReadOnly="True"
+                                         Text="{Binding SourceFile, Mode=OneWay}"
+                                         Style="{StaticResource ListTextBox}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="目标文件"
-                                    Width="250">
+                                    Width="270">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBox Text="{Binding DestinationFile, Mode=TwoWay}"
@@ -242,20 +250,24 @@ limitations under the License.
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="进度"
-                                    Width="150">
+                                    Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <ProgressBar Maximum="100"
+                                             ToolTip="{Binding Value, RelativeSource={RelativeSource Self}}"
                                              Value="{Binding Progress}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="状态"
-                                    Width="100">
+                                    Width="130">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding StateString}"
-                                           Foreground="{Binding StateBrush}" />
+                                <TextBox BorderThickness="0"
+                                         IsReadOnly="True"
+                                         Text="{Binding StateString, Mode=OneWay}"
+                                         Style="{StaticResource ListTextBox}"
+                                         Foreground="{Binding StateBrush}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

@@ -202,7 +202,6 @@ namespace SharpPDFDecrypter
                                 {
                                     info.State = TaskState.Error;
                                     info.Error = (task.Exception.InnerException ?? task.Exception).Message;
-                                    MessageBox.Show((task.Exception.InnerException ?? task.Exception).ToString());
                                 }
                                 else
                                 {
