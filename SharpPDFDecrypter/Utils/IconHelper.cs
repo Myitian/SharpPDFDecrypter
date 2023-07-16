@@ -1,15 +1,31 @@
+/*
+ * Copyright 2023 Myitian
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Runtime.InteropServices;
 
-// Part of the code comes from https://www.codeproject.com/Articles/2532/Obtaining-and-managing-file-and-folder-icons-using
-namespace IconHelper
+// Part of the code was taken from https://www.codeproject.com/Articles/2532/Obtaining-and-managing-file-and-folder-icons-using
+namespace SharpPDFDecrypter.Utils
 {
     /// <summary>
     /// Provides static methods to read system icons for both folders and files.
     /// </summary>
-    public class IconReader
+    public class IconHelper
     {
         /// <summary>
         /// Returns an icon for a given file - indicated by the name parameter.
@@ -155,7 +171,7 @@ namespace IconHelper
         public const uint BIF_EDITBOX = 0x0010;
         public const uint BIF_VALIDATE = 0x0020;
         public const uint BIF_NEWDIALOGSTYLE = 0x0040;
-        public const uint BIF_USENEWUI = (BIF_NEWDIALOGSTYLE | BIF_EDITBOX);
+        public const uint BIF_USENEWUI = BIF_NEWDIALOGSTYLE | BIF_EDITBOX;
         public const uint BIF_BROWSEINCLUDEURLS = 0x0080;
         public const uint BIF_BROWSEFORCOMPUTER = 0x1000;
         public const uint BIF_BROWSEFORPRINTER = 0x2000;

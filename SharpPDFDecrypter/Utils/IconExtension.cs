@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2023 Myitian
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,13 +14,22 @@
  * limitations under the License.
  */
 
+using System.Drawing;
 using System.Windows;
+using System.Windows.Interop;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
-[assembly: ThemeInfo(
-    ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located
-                                     //(used if a resource is not found in the page,
-                                     // or application resource dictionaries)
-    ResourceDictionaryLocation.SourceAssembly //where the generic resource dictionary is located
-                                              //(used if a resource is not found in the page,
-                                              // app, or any theme specific resource dictionaries)
-)]
+namespace SharpPDFDecrypter.Utils
+{
+    public static class IconExtension
+    {
+        public static ImageSource ToImageSource(this Icon icon)
+        {
+            return Imaging.CreateBitmapSourceFromHIcon(
+                icon.Handle,
+                Int32Rect.Empty,
+                BitmapSizeOptions.FromEmptyOptions());
+        }
+    }
+}
