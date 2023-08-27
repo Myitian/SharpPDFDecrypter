@@ -25,7 +25,7 @@ namespace SharpPDFDecrypter.Utils
     /// <summary>
     /// Provides static methods to read system icons for both folders and files.
     /// </summary>
-    public class IconHelper
+    public static class IconHelper
     {
         /// <summary>
         /// Returns an icon for a given file - indicated by the name parameter.
@@ -131,7 +131,7 @@ namespace SharpPDFDecrypter.Utils
         Small = 1
     }
 
-    public class Shell32
+    public static class Shell32
     {
 
         public const int MAX_PATH = 256;

@@ -22,14 +22,14 @@ namespace SharpPDFDecrypter.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
+    public class ResourcesText {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal ResourcesText() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace SharpPDFDecrypter.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SharpPDFDecrypter.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SharpPDFDecrypter.Properties.ResourcesText", typeof(ResourcesText).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -141,11 +141,11 @@ namespace SharpPDFDecrypter.Properties {
         }
         
         /// <summary>
-        ///   查找类似 {0} v{1} ({2})
+        ///   查找类似 {0} v{1}
         ///
-        ///项目作者：{3} （{4}）
-        ///项目地址：{5}
-        ///开源许可证：{6}
+        ///项目作者：{2} （{3}）
+        ///项目地址：{4}
+        ///开源许可证：{5}
         ///
         ///本程序支持移除 PDF 文件中的编辑和打印保护(Owner Password)
         ///和打开口令(User Password)（若文件有打开口令，需要提供打开口令），
@@ -177,46 +177,6 @@ namespace SharpPDFDecrypter.Properties {
         public static string ProjectName_QPDF {
             get {
                 return ResourceManager.GetString("ProjectName_QPDF", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Byte[] 类型的本地化资源。
-        /// </summary>
-        public static byte[] QPDF_32 {
-            get {
-                object obj = ResourceManager.GetObject("QPDF_32", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Byte[] 类型的本地化资源。
-        /// </summary>
-        public static byte[] QPDF_64 {
-            get {
-                object obj = ResourceManager.GetObject("QPDF_64", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Byte[] 类型的本地化资源。
-        /// </summary>
-        public static byte[] Wrapper_32 {
-            get {
-                object obj = ResourceManager.GetObject("Wrapper_32", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Byte[] 类型的本地化资源。
-        /// </summary>
-        public static byte[] Wrapper_64 {
-            get {
-                object obj = ResourceManager.GetObject("Wrapper_64", resourceCulture);
-                return ((byte[])(obj));
             }
         }
     }

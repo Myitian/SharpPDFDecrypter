@@ -89,7 +89,7 @@ limitations under the License.
                         Grid.Row="0"
                         Grid.Column="1"
                         Style="{StaticResource InfoTextBox}"
-                        Text="{x:Static p:Resources.ProjectName}" />
+                        Text="{x:Static p:ResourcesText.ProjectName}" />
                     <Label
                         Grid.Row="1"
                         Grid.Column="0"
@@ -98,7 +98,7 @@ limitations under the License.
                         Grid.Row="1"
                         Grid.Column="1"
                         Style="{StaticResource InfoTextBox}"
-                        Text="{x:Static p:Resources.ProjectAddress}" />
+                        Text="{x:Static p:ResourcesText.ProjectAddress}" />
                     <Label
                         Grid.Row="2"
                         Grid.Column="0"
@@ -107,11 +107,11 @@ limitations under the License.
                         Grid.Row="2"
                         Grid.Column="1"
                         Style="{StaticResource InfoTextBox}"
-                        Text="{x:Static p:Resources.LicenseIdentifier}" />
+                        Text="{x:Static p:ResourcesText.LicenseIdentifier}" />
                 </Grid>
                 <TextBox
                     Style="{StaticResource LicenseTextBox}"
-                    Text="{x:Static p:Resources.LICENSE}" />
+                    Text="{x:Static p:ResourcesText.LICENSE}" />
             </DockPanel>
         </TabItem>
         <TabItem
@@ -138,7 +138,7 @@ limitations under the License.
                             Grid.Row="0"
                             Grid.Column="1"
                             Style="{StaticResource InfoTextBox}"
-                            Text="{x:Static p:Resources.ProjectName_QPDF}" />
+                            Text="{x:Static p:ResourcesText.ProjectName_QPDF}" />
                         <Label
                             Grid.Row="1"
                             Grid.Column="0"
@@ -147,7 +147,7 @@ limitations under the License.
                             Grid.Row="1"
                             Grid.Column="1"
                             Style="{StaticResource InfoTextBox}"
-                            Text="{x:Static p:Resources.ProjectAddress_QPDF}" />
+                            Text="{x:Static p:ResourcesText.ProjectAddress_QPDF}" />
                         <Label
                             Grid.Row="2"
                             Grid.Column="0"
@@ -156,11 +156,11 @@ limitations under the License.
                             Grid.Row="2"
                             Grid.Column="1"
                             Style="{StaticResource InfoTextBox}"
-                            Text="{x:Static p:Resources.LicenseIdentifier_QPDF}" />
+                            Text="{x:Static p:ResourcesText.LicenseIdentifier_QPDF}" />
                     </Grid>
                     <TextBox
                         Style="{StaticResource LicenseTextBox}"
-                        Text="{x:Static p:Resources.LICENSE_QPDF}" />
+                        Text="{x:Static p:ResourcesText.LICENSE_QPDF}" />
                 </DockPanel>
             </DockPanel>
         </TabItem>

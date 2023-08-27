@@ -250,9 +250,16 @@ namespace SharpPDFDecrypter
             Assembly assembly = Assembly.GetExecutingAssembly();
             AssemblyName assemblyName = assembly.GetName();
             AssemblyCompanyAttribute company = assembly.GetCustomAttribute<AssemblyCompanyAttribute>();
-            string projectinfo = string.Format(Properties.Resources.ProjectInfo,
+            string projectinfo = string.Format(Properties.ResourcesText.ProjectInfo,
                                                assemblyName.Name,
                                                assemblyName.Version,
+#if x64
+                                               "x64",
+#elif x86
+                                               "x86",
+#else
+                                               "AnyCPU",
+#endif
                                                company?.Company,
                                                App.AuthorPageAddress,
                                                App.ProjectAddress,

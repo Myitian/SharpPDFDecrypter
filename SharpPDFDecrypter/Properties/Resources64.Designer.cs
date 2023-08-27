@@ -22,14 +22,14 @@ namespace SharpPDFDecrypter.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
+    public class Resources64 {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal Resources64() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace SharpPDFDecrypter.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SharpPDFDecrypter.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SharpPDFDecrypter.Properties.Resources64", typeof(Resources64).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -183,29 +183,9 @@ namespace SharpPDFDecrypter.Properties {
         /// <summary>
         ///   查找 System.Byte[] 类型的本地化资源。
         /// </summary>
-        public static byte[] QPDF_32 {
-            get {
-                object obj = ResourceManager.GetObject("QPDF_32", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Byte[] 类型的本地化资源。
-        /// </summary>
         public static byte[] QPDF_64 {
             get {
                 object obj = ResourceManager.GetObject("QPDF_64", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Byte[] 类型的本地化资源。
-        /// </summary>
-        public static byte[] Wrapper_32 {
-            get {
-                object obj = ResourceManager.GetObject("Wrapper_32", resourceCulture);
                 return ((byte[])(obj));
             }
         }

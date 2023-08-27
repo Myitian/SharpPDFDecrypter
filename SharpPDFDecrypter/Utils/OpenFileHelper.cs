@@ -18,7 +18,7 @@ using Microsoft.Win32;
 
 namespace SharpPDFDecrypter.Utils
 {
-    public class OpenFileHelper
+    public static class OpenFileHelper
     {
         public static bool ShowOpenFileDialog(string filter, out string[] files)
         {

@@ -11,10 +11,12 @@
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <Version>1.2.0</Version>
+    <Version>1.2.1</Version>
+    <Platforms>AnyCPU;x64;x86</Platforms>
+    <DefineConstants>$(DefineConstants);$(Platform)</DefineConstants>
   </PropertyGroup>
-  
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <DebugType>none</DebugType>
   </PropertyGroup>
 
@@ -31,17 +33,63 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Properties\Resources.Designer.cs">
+    <Compile Update="Properties\ResourcesText.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
+      <DependentUpon>ResourcesText.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Update="Properties\ResourcesText.resx">
+      <SubType>Designer</SubType>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourcesText.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="'$(Platform)'=='AnyCPU'">
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Remove="Properties\Resources64.Designer.cs" />
+    <Compile Remove="Properties\Resources32.Designer.cs" />
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Remove="Properties\Resources64.resx" />
+    <EmbeddedResource Remove="Properties\Resources32.resx" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Platform)'=='x64'">
+    <Compile Remove="Properties\Resources.Designer.cs" />
+    <Compile Update="Properties\Resources64.Designer.cs">
+      <DependentUpon>Resources64.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Remove="Properties\Resources32.Designer.cs" />
+    <EmbeddedResource Remove="Properties\Resources.resx" />
+    <EmbeddedResource Update="Properties\Resources64.resx">
+      <LastGenOutput>Resources64.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Remove="Properties\Resources32.resx" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Platform)'=='x86'">
+    <Compile Remove="Properties\Resources.Designer.cs" />
+    <Compile Remove="Properties\Resources64.Designer.cs" />
+    <Compile Update="Properties\Resources32.Designer.cs">
+      <DependentUpon>Resources32.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <EmbeddedResource Remove="Properties\Resources.resx" />
+    <EmbeddedResource Remove="Properties\Resources64.resx" />
+    <EmbeddedResource Update="Properties\Resources32.resx">
+      <LastGenOutput>Resources32.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
   </ItemGroup>
 

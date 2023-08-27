@@ -27,8 +27,8 @@ namespace SharpPDFDecrypter
     public partial class App : Application
     {
         public static readonly string AuthorPageAddress = "https://github.com/Myitian";
-        public static readonly string ProjectAddress = SharpPDFDecrypter.Properties.Resources.ProjectAddress;
-        public static readonly string License = SharpPDFDecrypter.Properties.Resources.LicenseIdentifier;
+        public static readonly string ProjectAddress = SharpPDFDecrypter.Properties.ResourcesText.ProjectAddress;
+        public static readonly string License = SharpPDFDecrypter.Properties.ResourcesText.LicenseIdentifier;
 
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -41,6 +41,13 @@ namespace SharpPDFDecrypter
             {
                 const string qpdfDll = "qpdf.dll";
                 const string wrapperDll = "wrapper.dll";
+#if x64
+                File.WriteAllBytes(qpdfDll, SharpPDFDecrypter.Properties.Resources64.QPDF_64);
+                File.WriteAllBytes(wrapperDll, SharpPDFDecrypter.Properties.Resources64.Wrapper_64);
+#elif x86
+                File.WriteAllBytes(qpdfDll, SharpPDFDecrypter.Properties.Resources32.QPDF_32);
+                File.WriteAllBytes(wrapperDll, SharpPDFDecrypter.Properties.Resources32.Wrapper_32);
+#else
                 if (Environment.Is64BitProcess)
                 {
                     File.WriteAllBytes(qpdfDll, SharpPDFDecrypter.Properties.Resources.QPDF_64);
@@ -51,6 +58,7 @@ namespace SharpPDFDecrypter
                     File.WriteAllBytes(qpdfDll, SharpPDFDecrypter.Properties.Resources.QPDF_32);
                     File.WriteAllBytes(wrapperDll, SharpPDFDecrypter.Properties.Resources.Wrapper_32);
                 }
+#endif
                 File.Open(qpdfDll, FileMode.Open, FileAccess.Read, FileShare.Read).Close();
                 File.Open(wrapperDll, FileMode.Open, FileAccess.Read, FileShare.Read).Close();
             }
