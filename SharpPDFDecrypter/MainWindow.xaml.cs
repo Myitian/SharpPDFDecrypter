@@ -55,19 +55,13 @@ namespace SharpPDFDecrypter
         {
             InitializeComponent();
 
-            AddFileIcon.Source = IconHelper.GetFileIcon(".pdf", IconSize.Large, false).ToImageSource();
-            AddFolderIcon.Source = IconHelper.GetFolderIcon(IconSize.Large).ToImageSource();
+            AddFileIcon.Source = IconHelper.GetFileIcon(".pdf").ToImageSource();
+            AddFolderIcon.Source = IconHelper.GetFolderIcon().ToImageSource();
             RemoveItemIcon.Source = IconHelper.ExtractIcon("%windir%\\system32\\shell32.dll", 131).ToImageSource();
             ClearListIcon.Source = IconHelper.ExtractIcon("%windir%\\system32\\shell32.dll", 31).ToImageSource();
-            RunDecryptionIcon.Source = IconHelper.ExtractIcon("%windir%\\system32\\shell32.dll", 137).ToImageSource();
-            StopDecryptionIcon.Source = IconHelper.ExtractIcon("%windir%\\system32\\wmploc.dll", 135).ToImageSource();
 
+            // 强制初始化 TaskInfoBrushes 中的
             _ = TaskInfoBrushes.UnprocessedBrush;
-            _ = TaskInfoBrushes.WaitingBrush;
-            _ = TaskInfoBrushes.RunningBrush;
-            _ = TaskInfoBrushes.DoneBrush;
-            _ = TaskInfoBrushes.CanceledBrush;
-            _ = TaskInfoBrushes.ErrorBrush;
         }
 
         private async void Window_Drop(object sender, DragEventArgs e)

@@ -13,261 +13,335 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 -->
-<Window x:Class="SharpPDFDecrypter.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SharpPDFDecrypter"
-        mc:Ignorable="d"
-        Title="SharpPDFDecrypter"
-        Height="450"
-        Width="800"
-        AllowDrop="true"
-        Drop="Window_Drop"
-        Closing="Window_Closing">
+<Window
+    x:Class="SharpPDFDecrypter.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:SharpPDFDecrypter"
+    mc:Ignorable="d"
+    Title="SharpPDFDecrypter"
+    Height="450"
+    Width="800"
+    AllowDrop="true"
+    Drop="Window_Drop"
+    Closing="Window_Closing">
     <Window.Resources>
-        <RoutedUICommand x:Key="OpenFileCmd" />
-        <RoutedUICommand x:Key="OpenFolderCmd" />
-        <RoutedUICommand x:Key="RemoveItemCmd" />
-        <RoutedUICommand x:Key="ClearListCmd" />
-        <RoutedUICommand x:Key="RunDecryptionCmd" />
-        <RoutedUICommand x:Key="StopDecryptionCmd" />
-        <RoutedUICommand x:Key="LicenseCmd" />
-        <RoutedUICommand x:Key="ProjectInfoCmd" />
-        <Style x:Key="MenuButton"
-               TargetType="Button">
-            <Setter Property="BorderThickness"
-                    Value="0" />
-            <Setter Property="Background"
-                    Value="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" />
-            <Setter Property="BorderBrush"
-                    Value="{x:Null}" />
-            <Setter Property="Width"
-                    Value="75" />
+        <RoutedUICommand
+            x:Key="OpenFileCmd" />
+        <RoutedUICommand
+            x:Key="OpenFolderCmd" />
+        <RoutedUICommand
+            x:Key="RemoveItemCmd" />
+        <RoutedUICommand
+            x:Key="ClearListCmd" />
+        <RoutedUICommand
+            x:Key="RunDecryptionCmd" />
+        <RoutedUICommand
+            x:Key="StopDecryptionCmd" />
+        <RoutedUICommand
+            x:Key="LicenseCmd" />
+        <RoutedUICommand
+            x:Key="ProjectInfoCmd" />
+        <Style
+            x:Key="MenuButton"
+            TargetType="Button">
+            <Setter
+                Property="BorderThickness"
+                Value="0" />
+            <Setter
+                Property="Background"
+                Value="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" />
+            <Setter
+                Property="BorderBrush"
+                Value="{x:Null}" />
+            <Setter
+                Property="Width"
+                Value="75" />
         </Style>
-        <Style x:Key="MenuImage"
-               TargetType="Image">
-            <Setter Property="RenderOptions.BitmapScalingMode"
-                    Value="NearestNeighbor" />
-            <Setter Property="Width"
-                    Value="32" />
-            <Setter Property="Height"
-                    Value="32" />
+        <Style
+            x:Key="MenuImage"
+            TargetType="Image">
+            <Setter
+                Property="RenderOptions.BitmapScalingMode"
+                Value="NearestNeighbor" />
+            <Setter
+                Property="Width"
+                Value="32" />
+            <Setter
+                Property="Height"
+                Value="32" />
         </Style>
-        <Style x:Key="ListTextBox"
-               TargetType="TextBox">
-            <Setter Property="ToolTip"
-                    Value="{Binding Text, RelativeSource={RelativeSource Self}}" />
-            <Setter Property="Background"
-                    Value="{x:Null}" />
-            <Setter Property="BorderBrush"
-                    Value="{x:Null}" />
+        <Style
+            x:Key="ListTextBox"
+            TargetType="TextBox">
+            <Setter
+                Property="ToolTip"
+                Value="{Binding Text, RelativeSource={RelativeSource Self}}" />
+            <Setter
+                Property="Background"
+                Value="{x:Null}" />
+            <Setter
+                Property="BorderBrush"
+                Value="{x:Null}" />
         </Style>
     </Window.Resources>
     <Window.CommandBindings>
-        <CommandBinding Command="{StaticResource OpenFileCmd}"
-                        Executed="OpenFile_Executed"
-                        CanExecute="OpenFile_CanExecute" />
-        <CommandBinding Command="{StaticResource OpenFolderCmd}"
-                        Executed="OpenFolder_Executed"
-                        CanExecute="OpenFolder_CanExecute" />
-        <CommandBinding Command="{StaticResource RemoveItemCmd}"
-                        Executed="RemoveItem_Executed"
-                        CanExecute="RemoveItem_CanExecute" />
-        <CommandBinding Command="{StaticResource ClearListCmd}"
-                        Executed="ClearList_Executed"
-                        CanExecute="ClearList_CanExecute" />
-        <CommandBinding Command="{StaticResource RunDecryptionCmd}"
-                        Executed="RunDecryption_Executed"
-                        CanExecute="RunDecryption_CanExecute" />
-        <CommandBinding Command="{StaticResource StopDecryptionCmd}"
-                        Executed="StopDecryption_Executed"
-                        CanExecute="StopDecryption_CanExecute" />
-        <CommandBinding Command="{StaticResource LicenseCmd}"
-                        Executed="License_Executed"
-                        CanExecute="License_CanExecute" />
-        <CommandBinding Command="{StaticResource ProjectInfoCmd}"
-                        Executed="ProjectInfo_Executed"
-                        CanExecute="ProjectInfo_CanExecute" />
+        <CommandBinding
+            Command="{StaticResource OpenFileCmd}"
+            Executed="OpenFile_Executed"
+            CanExecute="OpenFile_CanExecute" />
+        <CommandBinding
+            Command="{StaticResource OpenFolderCmd}"
+            Executed="OpenFolder_Executed"
+            CanExecute="OpenFolder_CanExecute" />
+        <CommandBinding
+            Command="{StaticResource RemoveItemCmd}"
+            Executed="RemoveItem_Executed"
+            CanExecute="RemoveItem_CanExecute" />
+        <CommandBinding
+            Command="{StaticResource ClearListCmd}"
+            Executed="ClearList_Executed"
+            CanExecute="ClearList_CanExecute" />
+        <CommandBinding
+            Command="{StaticResource RunDecryptionCmd}"
+            Executed="RunDecryption_Executed"
+            CanExecute="RunDecryption_CanExecute" />
+        <CommandBinding
+            Command="{StaticResource StopDecryptionCmd}"
+            Executed="StopDecryption_Executed"
+            CanExecute="StopDecryption_CanExecute" />
+        <CommandBinding
+            Command="{StaticResource LicenseCmd}"
+            Executed="License_Executed"
+            CanExecute="License_CanExecute" />
+        <CommandBinding
+            Command="{StaticResource ProjectInfoCmd}"
+            Executed="ProjectInfo_Executed"
+            CanExecute="ProjectInfo_CanExecute" />
     </Window.CommandBindings>
     <Window.InputBindings>
-        <KeyBinding Gesture="Ctrl+O"
-                    Command="{StaticResource OpenFileCmd}" />
+        <KeyBinding
+            Gesture="Ctrl+O"
+            Command="{StaticResource OpenFileCmd}" />
     </Window.InputBindings>
     <DockPanel>
-        <Menu DockPanel.Dock="Top"
-              AutomationProperties.Name="菜单">
-            <MenuItem Header="文件 (_F)">
-                <MenuItem Header="添加文件 (_F)"
-                          InputGestureText="Ctrl+O"
-                          Command="{StaticResource OpenFileCmd}" />
-                <MenuItem Header="添加文件夹 (_D)"
-                          Command="{StaticResource OpenFolderCmd}" />
-                <MenuItem Header="移除项目 (_R)"
-                          Command="{StaticResource RemoveItemCmd}" />
-                <MenuItem Header="清空列表 (_C)"
-                          Command="{StaticResource ClearListCmd}" />
+        <Menu
+            DockPanel.Dock="Top"
+            AutomationProperties.Name="菜单">
+            <MenuItem
+                Header="文件 (_F)">
+                <MenuItem
+                    Header="添加文件 (_F)"
+                    InputGestureText="Ctrl+O"
+                    Command="{StaticResource OpenFileCmd}" />
+                <MenuItem
+                    Header="添加文件夹 (_D)"
+                    Command="{StaticResource OpenFolderCmd}" />
+                <MenuItem
+                    Header="移除项目 (_R)"
+                    Command="{StaticResource RemoveItemCmd}" />
+                <MenuItem
+                    Header="清空列表 (_C)"
+                    Command="{StaticResource ClearListCmd}" />
             </MenuItem>
-            <MenuItem Header="运行 (_R)">
-                <MenuItem Header="运行解密 (_S)"
-                          Command="{StaticResource RunDecryptionCmd}" />
-                <MenuItem Header="中止解密 (_E)"
-                          Command="{StaticResource StopDecryptionCmd}" />
+            <MenuItem
+                Header="运行 (_R)">
+                <MenuItem
+                    Header="运行解密 (_S)"
+                    Command="{StaticResource RunDecryptionCmd}" />
+                <MenuItem
+                    Header="中止解密 (_E)"
+                    Command="{StaticResource StopDecryptionCmd}" />
             </MenuItem>
-            <MenuItem Header="关于 (_A)">
-                <MenuItem Header="许可证 (_L)"
-                          Command="{StaticResource LicenseCmd}" />
-                <MenuItem Header="项目信息 (_I)"
-                          Command="{StaticResource ProjectInfoCmd}" />
+            <MenuItem
+                Header="关于 (_A)">
+                <MenuItem
+                    Header="许可证 (_L)"
+                    Command="{StaticResource LicenseCmd}" />
+                <MenuItem
+                    Header="项目信息 (_I)"
+                    Command="{StaticResource ProjectInfoCmd}" />
             </MenuItem>
         </Menu>
-        <ScrollViewer DockPanel.Dock="Top"
-                      VerticalScrollBarVisibility="Disabled"
-                      HorizontalScrollBarVisibility="Auto">
-            <StackPanel Orientation="Horizontal"
-                        Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
-                <Button Style="{StaticResource MenuButton}"
-                        Command="{StaticResource OpenFileCmd}"
-                        AutomationProperties.Name="添加文件">
+        <ScrollViewer
+            DockPanel.Dock="Top"
+            VerticalScrollBarVisibility="Disabled"
+            HorizontalScrollBarVisibility="Auto">
+            <StackPanel
+                Orientation="Horizontal"
+                Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
+                <Button
+                    Style="{StaticResource MenuButton}"
+                    Command="{StaticResource OpenFileCmd}">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition />
                         </Grid.RowDefinitions>
-                        <Image x:Name="AddFileIcon"
-                               Style="{StaticResource MenuImage}"
-                               Grid.Row="0" />
-                        <Label Grid.Row="1">添加文件</Label>
+                        <Image
+                            x:Name="AddFileIcon"
+                            Style="{StaticResource MenuImage}"
+                            Grid.Row="0" />
+                        <Label
+                            Grid.Row="1">添加文件</Label>
                     </Grid>
                 </Button>
-                <Button Style="{StaticResource MenuButton}"
-                        Command="{StaticResource OpenFolderCmd}"
-                        AutomationProperties.Name="添加文件夹">
+                <Button
+                    Style="{StaticResource MenuButton}"
+                    Command="{StaticResource OpenFolderCmd}">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition />
                         </Grid.RowDefinitions>
-                        <Image x:Name="AddFolderIcon"
-                               Style="{StaticResource MenuImage}"
-                               Grid.Row="0" />
-                        <Label Grid.Row="1">添加文件夹</Label>
+                        <Image
+                            x:Name="AddFolderIcon"
+                            Style="{StaticResource MenuImage}"
+                            Grid.Row="0" />
+                        <Label
+                            Grid.Row="1">添加文件夹</Label>
                     </Grid>
                 </Button>
-                <Button Style="{StaticResource MenuButton}"
-                        Command="{StaticResource RemoveItemCmd}"
-                        AutomationProperties.Name="移除项目">
+                <Button
+                    Style="{StaticResource MenuButton}"
+                    Command="{StaticResource RemoveItemCmd}">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition />
                         </Grid.RowDefinitions>
-                        <Image x:Name="RemoveItemIcon"
-                               Style="{StaticResource MenuImage}"
-                               Grid.Row="0" />
-                        <Label Grid.Row="1">移除项目</Label>
+                        <Image
+                            x:Name="RemoveItemIcon"
+                            Style="{StaticResource MenuImage}"
+                            Grid.Row="0" />
+                        <Label
+                            Grid.Row="1">移除项目</Label>
                     </Grid>
                 </Button>
-                <Button Style="{StaticResource MenuButton}"
-                        Command="{StaticResource ClearListCmd}"
-                        AutomationProperties.Name="清空列表">
+                <Button
+                    Style="{StaticResource MenuButton}"
+                    Command="{StaticResource ClearListCmd}">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition />
                         </Grid.RowDefinitions>
-                        <Image x:Name="ClearListIcon"
-                               Style="{StaticResource MenuImage}"
-                               Grid.Row="0" />
-                        <Label Grid.Row="1">清空列表</Label>
+                        <Image
+                            x:Name="ClearListIcon"
+                            Style="{StaticResource MenuImage}"
+                            Grid.Row="0" />
+                        <Label
+                            Grid.Row="1">清空列表</Label>
                     </Grid>
                 </Button>
-                <Button Style="{StaticResource MenuButton}"
-                        Command="{StaticResource RunDecryptionCmd}"
-                        AutomationProperties.Name="运行解密">
+                <Button
+                    Style="{StaticResource MenuButton}"
+                    Command="{StaticResource RunDecryptionCmd}">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition />
                         </Grid.RowDefinitions>
-                        <Image x:Name="RunDecryptionIcon"
-                               Style="{StaticResource MenuImage}"
-                               Grid.Row="0" />
-                        <Label Grid.Row="1">运行解密</Label>
+                        <Image
+                            x:Name="RunDecryptionIcon"
+                            Style="{StaticResource MenuImage}"
+                            Grid.Row="0"
+                            Source="Resources/Start.ico" />
+                        <Label
+                            Grid.Row="1">运行解密</Label>
                     </Grid>
                 </Button>
-                <Button Style="{StaticResource MenuButton}"
-                        Command="{StaticResource StopDecryptionCmd}"
-                        AutomationProperties.Name="中止解密">
+                <Button
+                    Style="{StaticResource MenuButton}"
+                    Command="{StaticResource StopDecryptionCmd}">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition />
                         </Grid.RowDefinitions>
-                        <Image x:Name="StopDecryptionIcon"
-                               Style="{StaticResource MenuImage}"
-                               Grid.Row="0" />
-                        <Label Grid.Row="1">中止解密</Label>
+                        <Image
+                            x:Name="StopDecryptionIcon"
+                            Style="{StaticResource MenuImage}"
+                            Grid.Row="0"
+                            Source="Resources/Stop.ico" />
+                        <Label
+                            Grid.Row="1">中止解密</Label>
                     </Grid>
                 </Button>
             </StackPanel>
         </ScrollViewer>
-        <Label x:Name="State"
-               DockPanel.Dock="Bottom">空闲</Label>
-        <ListView x:Name="TaskView"
-                  ItemsSource="{Binding Tasks, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}"
-                  ScrollViewer.CanContentScroll="False"
-                  d:ItemsSource="{d:SampleData ItemCount=5}">
+        <Label
+            x:Name="State"
+            DockPanel.Dock="Bottom">空闲</Label>
+        <ListView
+            x:Name="TaskView"
+            ItemsSource="{Binding Tasks, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}"
+            ScrollViewer.CanContentScroll="False"
+            d:ItemsSource="{d:SampleData ItemCount=5}"
+            ScrollViewer.VerticalScrollBarVisibility="Auto"
+            ScrollViewer.HorizontalScrollBarVisibility="Auto">
             <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="HorizontalContentAlignment"
-                            Value="Stretch" />
-                    <Setter Property="VerticalContentAlignment"
-                            Value="Stretch" />
+                <Style
+                    TargetType="ListViewItem">
+                    <Setter
+                        Property="HorizontalContentAlignment"
+                        Value="Stretch" />
+                    <Setter
+                        Property="VerticalContentAlignment"
+                        Value="Stretch" />
                 </Style>
             </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="源文件"
-                                    Width="270">
+                    <GridViewColumn
+                        Header="源文件"
+                        Width="270">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBox BorderThickness="0"
-                                         IsReadOnly="True"
-                                         Text="{Binding SourceFile, Mode=OneWay}"
-                                         Style="{StaticResource ListTextBox}" />
+                                <TextBox
+                                    BorderThickness="0"
+                                    IsReadOnly="True"
+                                    Text="{Binding SourceFile, Mode=OneWay}"
+                                    Style="{StaticResource ListTextBox}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="目标文件"
-                                    Width="270">
+                    <GridViewColumn
+                        Header="目标文件"
+                        Width="270">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBox Text="{Binding DestinationFile, Mode=TwoWay}"
-                                         Style="{StaticResource ListTextBox}" />
+                                <TextBox
+                                    Text="{Binding DestinationFile, Mode=TwoWay}"
+                                    Style="{StaticResource ListTextBox}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="进度"
-                                    Width="100">
+                    <GridViewColumn
+                        Header="进度"
+                        Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <ProgressBar Maximum="100"
-                                             ToolTip="{Binding Value, RelativeSource={RelativeSource Self}}"
-                                             Value="{Binding Progress}" />
+                                <ProgressBar
+                                    Maximum="100"
+                                    ToolTip="{Binding Value, RelativeSource={RelativeSource Self}}"
+                                    Value="{Binding Progress}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="状态"
-                                    Width="130">
+                    <GridViewColumn
+                        Header="状态"
+                        Width="130">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBox BorderThickness="0"
-                                         IsReadOnly="True"
-                                         Text="{Binding StateString, Mode=OneWay}"
-                                         Style="{StaticResource ListTextBox}"
-                                         Foreground="{Binding StateBrush}" />
+                                <TextBox
+                                    BorderThickness="0"
+                                    IsReadOnly="True"
+                                    Text="{Binding StateString, Mode=OneWay}"
+                                    Style="{StaticResource ListTextBox}"
+                                    Foreground="{Binding StateBrush}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

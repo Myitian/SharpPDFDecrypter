@@ -16,6 +16,7 @@
 
 using System;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Windows;
 
 namespace SharpPDFDecrypter
@@ -31,15 +32,31 @@ namespace SharpPDFDecrypter
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            if (Environment.Is64BitProcess)
+            if (!Enum.TryParse<UnmanagedType>("LPUTF8Str", out _))
             {
-                File.WriteAllBytes("qpdf.dll", SharpPDFDecrypter.Properties.Resources.QPDF_64);
-                File.WriteAllBytes("wrapper.dll", SharpPDFDecrypter.Properties.Resources.Wrapper_64);
+                MessageBox.Show("请安装 .NET Framework 4.7 或更高版本！");
+                Environment.Exit(-1);
             }
-            else
+            try
             {
-                File.WriteAllBytes("qpdf.dll", SharpPDFDecrypter.Properties.Resources.QPDF_32);
-                File.WriteAllBytes("wrapper.dll", SharpPDFDecrypter.Properties.Resources.Wrapper_32);
+                const string qpdfDll = "qpdf.dll";
+                const string wrapperDll = "wrapper.dll";
+                if (Environment.Is64BitProcess)
+                {
+                    File.WriteAllBytes(qpdfDll, SharpPDFDecrypter.Properties.Resources.QPDF_64);
+                    File.WriteAllBytes(wrapperDll, SharpPDFDecrypter.Properties.Resources.Wrapper_64);
+                }
+                else
+                {
+                    File.WriteAllBytes(qpdfDll, SharpPDFDecrypter.Properties.Resources.QPDF_32);
+                    File.WriteAllBytes(wrapperDll, SharpPDFDecrypter.Properties.Resources.Wrapper_32);
+                }
+                File.Open(qpdfDll, FileMode.Open, FileAccess.Read, FileShare.Read).Close();
+                File.Open(wrapperDll, FileMode.Open, FileAccess.Read, FileShare.Read).Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
 
             base.OnStartup(e);

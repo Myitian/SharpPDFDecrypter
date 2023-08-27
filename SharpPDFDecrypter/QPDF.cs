@@ -46,8 +46,7 @@ namespace SharpPDFDecrypter
          * Write
          */
         [DllImport("qpdf.dll", EntryPoint = "qpdf_init_write", CallingConvention = CallingConvention.Cdecl)]
-        public static extern QPDF_ERROR_CODE InitWrite(IntPtr qpdf,
-                                                             [MarshalAs(UnmanagedType.LPUTF8Str)] string filename);
+        public static extern QPDF_ERROR_CODE InitWrite(IntPtr qpdf, [MarshalAs(UnmanagedType.LPUTF8Str)] string filename);
         [DllImport("qpdf.dll", EntryPoint = "qpdf_init_write_memory", CallingConvention = CallingConvention.Cdecl)]
         public static extern QPDF_ERROR_CODE InitWriteMemory(IntPtr qpdf);
         [DllImport("qpdf.dll", EntryPoint = "qpdf_write", CallingConvention = CallingConvention.Cdecl)]
@@ -241,9 +240,6 @@ namespace SharpPDFDecrypter
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    class QPDFError { public IntPtr Exc; }
-
-    [StructLayout(LayoutKind.Sequential)]
     public class QPDFExc
     {
         public QPDF_ERROR_CODE_E ErrorCode;
@@ -259,8 +255,6 @@ namespace SharpPDFDecrypter
         public string Filename { get; private set; }
         public string Object { get; private set; }
         public long Offset { get; private set; }
-
-        public string ErrorCodeString => ErrorCode.GetString();
 
         public QPDFException(QPDFExc error) : base($"（{error.ErrorCode.GetString()}）{MarshalEx.PtrToStringUTF8(error.Message)}")
         {

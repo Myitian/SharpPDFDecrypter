@@ -13,50 +13,67 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 -->
-<Window x:Class="SharpPDFDecrypter.LicenseWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SharpPDFDecrypter"
-        xmlns:p="clr-namespace:SharpPDFDecrypter.Properties"
-        mc:Ignorable="d"
-        Title="许可证信息"
-        Height="600"
-        Width="600">
+<Window
+    x:Class="SharpPDFDecrypter.LicenseWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:SharpPDFDecrypter"
+    xmlns:p="clr-namespace:SharpPDFDecrypter.Properties"
+    mc:Ignorable="d"
+    Title="许可证信息"
+    Height="600"
+    Width="600">
     <Window.Resources>
-        <Style x:Key="ReadOnlyTextBox"
-               TargetType="TextBox">
-            <Setter Property="IsReadOnly"
-                    Value="True" />
+        <Style
+            x:Key="ReadOnlyTextBox"
+            TargetType="TextBox">
+            <Setter
+                Property="IsReadOnly"
+                Value="True" />
         </Style>
-        <Style x:Key="InfoTextBox"
-               TargetType="TextBox"
-               BasedOn="{StaticResource ReadOnlyTextBox}">
-            <Setter Property="VerticalAlignment"
-                    Value="Center" />
-            <Setter Property="BorderBrush"
-                    Value="{x:Null}" />
-            <Setter Property="BorderThickness"
-                    Value="0" />
+        <Style
+            x:Key="InfoTextBox"
+            TargetType="TextBox"
+            BasedOn="{StaticResource ReadOnlyTextBox}">
+            <Setter
+                Property="VerticalAlignment"
+                Value="Center" />
+            <Setter
+                Property="BorderBrush"
+                Value="{x:Null}" />
+            <Setter
+                Property="Background"
+                Value="{x:Null}" />
+            <Setter
+                Property="BorderThickness"
+                Value="0" />
         </Style>
-        <Style x:Key="LicenseTextBox"
-               TargetType="TextBox"
-               BasedOn="{StaticResource ReadOnlyTextBox}">
-            <Setter Property="VerticalScrollBarVisibility"
-                    Value="Auto" />
-            <Setter Property="HorizontalScrollBarVisibility"
-                    Value="Auto" />
-            <Setter Property="FontFamily"
-                    Value="Courier New" />
+        <Style
+            x:Key="LicenseTextBox"
+            TargetType="TextBox"
+            BasedOn="{StaticResource ReadOnlyTextBox}">
+            <Setter
+                Property="VerticalScrollBarVisibility"
+                Value="Auto" />
+            <Setter
+                Property="HorizontalScrollBarVisibility"
+                Value="Auto" />
+            <Setter
+                Property="FontFamily"
+                Value="Courier New" />
         </Style>
     </Window.Resources>
     <TabControl>
-        <TabItem Header="本程序">
+        <TabItem
+            Header="本程序">
             <DockPanel>
-                <Grid DockPanel.Dock="Top">
+                <Grid
+                    DockPanel.Dock="Top">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition
+                            Width="Auto" />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
@@ -64,38 +81,48 @@ limitations under the License.
                         <RowDefinition />
                         <RowDefinition />
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0"
-                           Grid.Column="0"
-                           Content="项目名称：" />
-                    <TextBox  Grid.Row="0"
-                              Grid.Column="1"
-                              Style="{StaticResource InfoTextBox}"
-                              Text="{x:Static p:Resources.ProjectName}" />
-                    <Label Grid.Row="1"
-                           Grid.Column="0"
-                           Content="项目地址：" />
-                    <TextBox Grid.Row="1"
-                             Grid.Column="1"
-                             Style="{StaticResource InfoTextBox}"
-                             Text="{x:Static p:Resources.ProjectAddress}" />
-                    <Label Grid.Row="2"
-                           Grid.Column="0"
-                           Content="许可证：" />
-                    <TextBox  Grid.Row="2"
-                              Grid.Column="1"
-                              Style="{StaticResource InfoTextBox}"
-                              Text="{x:Static p:Resources.LicenseIdentifier}" />
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Content="项目名称：" />
+                    <TextBox
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Style="{StaticResource InfoTextBox}"
+                        Text="{x:Static p:Resources.ProjectName}" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Content="项目地址：" />
+                    <TextBox
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Style="{StaticResource InfoTextBox}"
+                        Text="{x:Static p:Resources.ProjectAddress}" />
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Content="许可证：" />
+                    <TextBox
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Style="{StaticResource InfoTextBox}"
+                        Text="{x:Static p:Resources.LicenseIdentifier}" />
                 </Grid>
-                <TextBox Style="{StaticResource LicenseTextBox}"
-                         Text="{x:Static p:Resources.LICENSE}" />
+                <TextBox
+                    Style="{StaticResource LicenseTextBox}"
+                    Text="{x:Static p:Resources.LICENSE}" />
             </DockPanel>
         </TabItem>
-        <TabItem Header="qpdf">
+        <TabItem
+            Header="qpdf">
             <DockPanel>
                 <DockPanel>
-                    <Grid DockPanel.Dock="Top">
+                    <Grid
+                        DockPanel.Dock="Top">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition
+                                Width="Auto" />
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
@@ -103,30 +130,37 @@ limitations under the License.
                             <RowDefinition />
                             <RowDefinition />
                         </Grid.RowDefinitions>
-                        <Label Grid.Row="0"
-                               Grid.Column="0"
-                               Content="项目名称：" />
-                        <TextBox  Grid.Row="0"
-                                  Grid.Column="1"
-                                  Style="{StaticResource InfoTextBox}"
-                                  Text="{x:Static p:Resources.ProjectName_QPDF}" />
-                        <Label Grid.Row="1"
-                               Grid.Column="0"
-                               Content="项目地址：" />
-                        <TextBox Grid.Row="1"
-                                 Grid.Column="1"
-                                 Style="{StaticResource InfoTextBox}"
-                                 Text="{x:Static p:Resources.ProjectAddress_QPDF}" />
-                        <Label Grid.Row="2"
-                               Grid.Column="0"
-                               Content="许可证：" />
-                        <TextBox  Grid.Row="2"
-                                  Grid.Column="1"
-                                  Style="{StaticResource InfoTextBox}"
-                                  Text="{x:Static p:Resources.LicenseIdentifier_QPDF}" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Content="项目名称：" />
+                        <TextBox
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Style="{StaticResource InfoTextBox}"
+                            Text="{x:Static p:Resources.ProjectName_QPDF}" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Content="项目地址：" />
+                        <TextBox
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Style="{StaticResource InfoTextBox}"
+                            Text="{x:Static p:Resources.ProjectAddress_QPDF}" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Content="许可证：" />
+                        <TextBox
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Style="{StaticResource InfoTextBox}"
+                            Text="{x:Static p:Resources.LicenseIdentifier_QPDF}" />
                     </Grid>
-                    <TextBox Style="{StaticResource LicenseTextBox}"
-                             Text="{x:Static p:Resources.LICENSE_QPDF}" />
+                    <TextBox
+                        Style="{StaticResource LicenseTextBox}"
+                        Text="{x:Static p:Resources.LICENSE_QPDF}" />
                 </DockPanel>
             </DockPanel>
         </TabItem>
